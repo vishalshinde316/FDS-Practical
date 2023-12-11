@@ -1,0 +1,106 @@
+#Students Sport List
+
+Cricket=[]
+Badminton=[]
+Football=[]
+A=int(input("No. of students who play Cricket:"))
+for n in range(0,A):
+    a=str(input("Enter name of student:"))
+    Cricket.append(a)
+print("List of students who play Cricket:  ",Cricket)
+   
+B=int(input("No. of students who play Badminton:"))
+for n in range(0,B):
+    b=str(input("Enter name of student:"))
+    Badminton.append(b)
+print("List of students who play Badminton:  ",Badminton)
+
+C=int(input("No. of students who play Football:"))
+for n in range(0,C):
+    c=str(input("Enter name of student:"))
+    Football.append(c)
+print("List of students who play Football:  ",Football)
+
+def first_condition(Cricket,Badminton):  
+    newlist=[]
+    len1=len(Cricket)
+    len2=len(Badminton)
+   
+    for i in range(len1):
+        for j in range(len2):
+            if(Cricket[i]==Badminton[j]):
+                newlist.append(Cricket[i])
+                break
+    print("List of students who play both Cricket and Badminton: ",newlist)
+first_condition(Cricket,Badminton)
+
+def second_condition(Cricket,Badminton):
+    newlist=[]
+    flag=0
+    len1=len(Cricket)
+    len2=len(Badminton)
+    for i in range(len1):
+        for j in range(len2):
+            if(Cricket[i]==Badminton[j]):
+                flag=1
+                break
+        if(flag==0):
+            newlist.append(Cricket[i])
+        flag=0
+    for i in range(len2):
+        for j in range(len1):
+            if(Badminton[i]==Cricket[j]):
+                flag=1
+                break
+        if(flag==0):
+            newlist.append(Badminton[i])
+        flag=0
+    print("List of students who play either Cricket or Badminton: ",newlist)
+second_condition(Cricket,Badminton)
+
+def third_condition(Cricket,Football,Badminton):
+    newlist=[]
+    flag=0
+    len1=len(Cricket)
+    len2=len(Badminton)
+    len3=len(Football)
+    for i in range(len3):
+        for j in range(len1):
+            if(Football[i]==Cricket[j]):
+                flag=1
+                break
+        for var in range(len2):
+            if(Football[i]==Badminton[var]):
+                flag=1
+                break
+        if(flag==0):
+            newlist.append(Football[i])
+        flag=0
+    print("Students who play neither Cricket nor Badminton: ",newlist)
+third_condition(Cricket,Football,Badminton)
+
+def fourth_condition(Cricket,Badminton,Football):
+    list1=[]
+    newlist=[]
+    len1=len(Cricket)
+    len2=len(Badminton)
+    len3=len(Football)
+    flag=0
+    for i in range(len1):
+        for j in range(len3):
+            if(Cricket[i]==Football[j]):
+                list1.append(Cricket[i])
+                break
+           
+    lena=len(list1)
+    for i in range(lena):
+        for j in range(len2):
+            if(list1[i]==Badminton[j]):
+                flag=1
+                break
+        if(flag==0):
+            newlist.append(list1[i])
+        flag=0
+                   
+    print("Students who play Cricket and Football but not Badminton: ",newlist)
+fourth_condition(Cricket,Badminton,Football)

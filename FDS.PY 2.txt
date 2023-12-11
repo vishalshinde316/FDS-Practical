@@ -1,0 +1,87 @@
+#FDS Marks List
+
+A=[]
+def accept_marks(A):
+    n=int(input("Enter the total no. of student:"))
+    for i in range(n):
+        while True:
+            x=input("Enter the marks scored in FDS for student %d:"%(i+1))
+            if(x=="AB"):
+                x=-1
+                break
+            x=int(x)
+            if(x>=0 and x<=30):
+                break
+            else:
+                print("Plz enter valid marks out of 30")
+        A.append(x)
+    print("Marks accepted & stored successfully");
+  
+    
+def display_marks(A):
+    print("\n marks scored in FDS")
+    for i in range(len(A)):
+        if(A[i]==-1):
+            print("\tStudent %d:AB"%(i+1))
+        else:
+            print("\tStudent %d:%d"%(i+1,A[i]))
+
+
+def find_average_score_of_class(A):
+    sum=0
+    for i in range(len(A)):
+        if(A[i]!=-1):
+            sum=sum+A[i]
+    avg = sum/len(A)
+    print("\nAverage score of class is%.2f\n\n"%avg)
+    
+def find_highest_and_lowest_score_of_class(A):
+    max=-1
+    min=31
+    for i in range(1,len(A)):
+        if(max<A[i]):
+            max=A[i]
+            max_fin=i
+        if(min>A[i] and A[i]!=-1):
+            min=A[i]
+            min_fin=i
+    print("Highest marks score of class is %d scored by student %d"%(max,max_fin+1))
+    print("Lowest mark score of class is %d scored by student %d"%(min,min_fin+1))
+
+accept_marks(A)
+display_marks(A)
+find_average_score_of_class(A)
+find_highest_and_lowest_score_of_class(A)
+
+def find_count_of_absent_students(A):
+    count=0
+    for i in range (len(A)):
+        if (A[i]==-1):
+            count+=1
+    print("Absent student count=%d"%count)
+    
+find_count_of_absent_students(A)
+
+def display_marks_with_highest_freq(A):
+    freq=0
+    for i in range (len(A)):
+        count=0
+        if(A[i]!=-1):
+            for j in range (len(A)):
+                if(A[i]==A[j]):
+                    count+=1
+        if("freq<count"):
+            marks=A[i]
+            freq=count
+    print("highest marks frequncy is %d(%d)"%(marks,freq))
+display_marks_with_highest_freq(A)
+
+
+
+
+
+
+
+
+
+
